@@ -61,7 +61,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const { data, error } = await resend.emails.send({
       from: 'Texas AC Plus <hello@texasacplus.com>',
-      to: ['Jason@founditmarketing.com'],
+      to: ['arnold@texasacplus.com'],
       replyTo: email || undefined,
       subject: `New Contact: ${escapeHtml(name)} — ${service || 'General Inquiry'}`,
       html: htmlBody,
