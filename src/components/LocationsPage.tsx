@@ -34,7 +34,7 @@ export const LOCATIONS: LocationData[] = [
     city: 'Edinburg',
     county: 'Hidalgo County',
     tagline: 'Our Home Base',
-    stat: '15+',
+    stat: '34+',
     statLabel: 'Years Here',
     accentColor: 'oklch(42% 0.22 22)',
     bgColor: 'oklch(34% 0.16 22)',
@@ -285,7 +285,7 @@ export const LocationsPage = () => {
         <p className="font-barlow font-light" style={{ color: 'rgba(255,255,255,0.65)', fontSize: '1rem', marginBottom: '1rem' }}>
           Not seeing your city? We serve within 60 miles of Edinburgh.
         </p>
-        <a href="tel:9563210400" className="btn-primary">
+        <a href="tel:9562253834" className="btn-primary">
           <Phone className="w-4 h-4" />
           Call to Confirm Your Area
         </a>

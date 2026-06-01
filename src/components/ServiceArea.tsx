@@ -167,7 +167,7 @@ export const ServiceArea = () => {
         </div>
 
         <div className="flex flex-wrap justify-center gap-4 reveal">
-          <a href="tel:9563210400" id="service-area-cta" className="btn-primary">
+          <a href="tel:9562253834" id="service-area-cta" className="btn-primary">
             Call to Confirm Your Area
           </a>
           <a href="#locations" className="btn-outline">

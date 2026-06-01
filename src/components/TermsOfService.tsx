@@ -150,8 +150,8 @@ export const TermsOfService = () => {
         >
           Full Terms and Conditions are below. Please read carefully before scheduling service
           or using our website. Questions? Call us at{' '}
-          <a href="tel:9563210400" style={{ color: 'var(--color-gold)', textDecoration: 'none' }}>
-            (956) 321-0400
+          <a href="tel:9562253834" style={{ color: 'var(--color-gold)', textDecoration: 'none' }}>
+            (956) 225-3834
           </a>
           .
         </p>
@@ -370,7 +370,7 @@ export const TermsOfService = () => {
         </Body>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', marginTop: '0.5rem', marginBottom: '3rem' }}>
           <a
-            href="tel:9563210400"
+            href="tel:9562253834"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -383,10 +383,10 @@ export const TermsOfService = () => {
               transition: 'opacity 150ms',
             }}
           >
-            <Phone className="w-4 h-4" /> (956) 321-0400
+            <Phone className="w-4 h-4" /> (956) 225-3834
           </a>
           <a
-            href="mailto:Info@domain.com"
+            href="mailto:arnold@texasacplus.com"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -400,7 +400,7 @@ export const TermsOfService = () => {
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'var(--color-gold)'; }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.65)'; }}
           >
-            <Mail className="w-4 h-4" /> Info@domain.com
+            <Mail className="w-4 h-4" /> arnold@texasacplus.com
           </a>
           <p style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.85rem', color: 'rgba(255,255,255,0.4)', marginTop: '0.25rem' }}>
             Edinburgh, TX 78539 · Licensed &amp; Insured · TACLA License

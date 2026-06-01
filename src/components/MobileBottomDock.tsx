@@ -29,7 +29,7 @@ export const MobileBottomDock = () => {
         Call Now
       </a>
       <a
-        href="mailto:Info@domain.com"
+        href="mailto:arnold@texasacplus.com"
         className="flex-1 flex items-center justify-center gap-2 font-barlow font-bold uppercase py-4"
         style={{
           backgroundColor: 'var(--color-navy)',

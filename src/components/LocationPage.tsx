@@ -286,9 +286,9 @@ export const LocationPage: React.FC<LocationPageProps> = ({ locationId }) => {
               <p className="font-barlow text-white/80 mb-5" style={{ fontSize: '0.88rem', lineHeight: 1.5 }}>
                 Same-day service. Free estimates. Real humans answer.
               </p>
-              <a href="tel:9563210400" className="btn-primary w-full justify-center" style={{ backgroundColor: 'white', color: 'var(--color-red)' }}>
+              <a href="tel:9562253834" className="btn-primary w-full justify-center" style={{ backgroundColor: 'white', color: 'var(--color-red)' }}>
                 <Phone className="w-4 h-4" />
-                (956) 321-0400
+                (956) 225-3834
               </a>
             </div>
 
@@ -327,9 +327,9 @@ export const LocationPage: React.FC<LocationPageProps> = ({ locationId }) => {
           {loc.description}
         </p>
         <div className="flex flex-wrap justify-center gap-4">
-          <a href="tel:9563210400" className="btn-primary">
+          <a href="tel:9562253834" className="btn-primary">
             <Phone className="w-4 h-4" />
-            Call (956) 321-0400
+            Call (956) 225-3834
           </a>
           <a href="#locations" className="btn-outline">
             View All Locations

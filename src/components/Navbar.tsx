@@ -87,13 +87,13 @@ export const Navbar = () => {
 
           {/* Desktop CTA */}
           <a
-            href="tel:9563210400"
+            href="tel:9562253834"
             id="nav-cta"
             className="hidden md:flex items-center gap-2 btn-primary"
             style={{ padding: '0.6rem 1.25rem', fontSize: '0.78rem' }}
           >
             <Phone className="w-3.5 h-3.5" />
-            (956) 321-0400
+            (956) 225-3834
           </a>
 
           {/* Mobile Hamburger */}
@@ -159,7 +159,7 @@ export const Navbar = () => {
           </a>
         ))}
         <a
-          href="tel:9563210400"
+          href="tel:9562253834"
           onClick={() => setMobileOpen(false)}
           className="btn-primary mt-4"
           style={{ fontSize: '1rem' }}

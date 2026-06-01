@@ -134,14 +134,14 @@ export const ContactSection: React.FC = () => {
               {
                 icon: <Phone className="w-5 h-5" />,
                 label: 'Call Us',
-                value: '(956) 321-0400',
-                href: 'tel:9563210400',
+                value: '(956) 225-3834',
+                href: 'tel:9562253834',
               },
               {
                 icon: <Mail className="w-5 h-5" />,
                 label: 'Email',
-                value: 'service@texasacplus.com',
-                href: 'mailto:service@texasacplus.com',
+                value: 'arnold@texasacplus.com',
+                href: 'mailto:arnold@texasacplus.com',
               },
               {
                 icon: <MapPin className="w-5 h-5" />,
@@ -246,8 +246,8 @@ export const ContactSection: React.FC = () => {
                 </h3>
                 <p style={{ fontFamily: 'var(--font-barlow)', color: 'oklch(65% 0.01 250)', fontSize: '0.95rem', maxWidth: '28rem' }}>
                   We'll be in touch shortly. For immediate help call{' '}
-                  <a href="tel:9563210400" style={{ color: 'var(--color-gold)', fontWeight: 700 }}>
-                    (956) 321-0400
+                  <a href="tel:9562253834" style={{ color: 'var(--color-gold)', fontWeight: 700 }}>
+                    (956) 225-3834
                   </a>.
                 </p>
               </div>
@@ -321,7 +321,7 @@ export const ContactSection: React.FC = () => {
                     }}
                   >
                     <AlertCircle className="w-4 h-4 flex-shrink-0" />
-                    Something went wrong. Please call us directly at (956) 321-0400.
+                    Something went wrong. Please call us directly at (956) 225-3834.
                   </div>
                 )}
 

@@ -5,7 +5,7 @@ import { useCursorParallax } from '../hooks/useCursorParallax';
 
 /* ── Stat badge data ── */
 const STATS = [
-  { value: '15+', label: 'Years Serving South Texas' },
+  { value: '34+', label: 'Years Serving South Texas' },
   { value: '24/7', label: 'Emergency Response' },
   { value: '60mi', label: 'Service Radius' },
 ];
@@ -239,7 +239,7 @@ export const Hero = () => {
           >
             South Texas
             <br />
-            <span style={{ color: 'var(--color-gold)' }}>HVAC</span>
+            <span style={{ color: 'var(--color-gold)' }}>HVAC & Generators</span>
             <br />
             Done Right.
           </motion.h1>
@@ -271,9 +271,9 @@ export const Hero = () => {
             className="flex flex-wrap items-center gap-4"
             style={{ marginBottom: 'clamp(3rem, 6vw, 4.5rem)' }}
           >
-            <a href="tel:9563210400" id="hero-primary-cta" className="btn-primary">
+            <a href="tel:9562253834" id="hero-primary-cta" className="btn-primary">
               <Phone className="w-4 h-4" />
-              (956) 321-0400
+              (956) 225-3834
             </a>
             <a href="#services" id="hero-secondary-cta" className="btn-outline">
               Our Services

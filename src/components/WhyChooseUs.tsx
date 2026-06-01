@@ -68,7 +68,7 @@ export const WhyChooseUs = () => {
             </p>
 
             <a
-              href="tel:9563210400"
+              href="tel:9562253834"
               className="btn-primary mt-8 inline-flex"
               style={{ backgroundColor: 'var(--color-navy)' }}
             >

@@ -194,7 +194,7 @@ const SERVICE_DATA: Record<string, ServiceConfig> = {
   'generators': {
     id: 'generators',
     icon: Power,
-    title: 'Generator Sales & Rentals',
+    title: 'Generator Sales & Service',
     tagline: 'Reliable power when you need it most.',
     heroImage: '/images/commercial-hvac.jpg',
     accentColor: 'oklch(60% 0.18 45)',
@@ -422,9 +422,9 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId }) => {
               <p className="font-barlow text-white/80 mb-5" style={{ fontSize: '0.9rem', lineHeight: 1.55 }}>
                 Same-day service available. Free estimates on all installations.
               </p>
-              <a href="tel:9563210400" className="btn-primary w-full justify-center" style={{ backgroundColor: 'white', color: 'var(--color-red)' }}>
+              <a href="tel:9562253834" className="btn-primary w-full justify-center" style={{ backgroundColor: 'white', color: 'var(--color-red)' }}>
                 <Phone className="w-4 h-4" />
-                (956) 321-0400
+                (956) 225-3834
               </a>
             </div>
 
@@ -473,9 +473,9 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId }) => {
         <p className="font-barlow font-light mx-auto mb-8" style={{ color: 'rgba(255,255,255,0.72)', fontSize: '1.05rem', maxWidth: '36rem' }}>
           Call for a free estimate or to book same-day service. Real humans answer our phones.
         </p>
-        <a href="tel:9563210400" className="btn-primary">
+        <a href="tel:9562253834" className="btn-primary">
           <Phone className="w-4 h-4" />
-          Call (956) 321-0400
+          Call (956) 225-3834
         </a>
       </div>
     </div>

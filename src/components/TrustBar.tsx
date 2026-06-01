@@ -13,7 +13,7 @@ interface StatConfig {
 }
 
 const STATS: StatConfig[] = [
-  { target: 15, suffix: '+', label: 'Years in Business', icon: Award },
+  { target: 34, suffix: '+', label: 'Years in Business', icon: Award },
   { target: 60, suffix: ' mi', label: 'Service Radius', icon: MapPin },
   { target: 2400, suffix: '+', label: 'Jobs Completed', icon: CheckCircle, separator: true },
   { target: 24, suffix: '/7', label: 'Emergency Availability', icon: Clock },

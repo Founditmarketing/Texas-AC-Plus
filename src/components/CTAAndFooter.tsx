@@ -65,11 +65,11 @@ export const CTABand = () => {
         </div>
 
         <div className="flex flex-wrap justify-center gap-4 reveal">
-          <a href="tel:9563210400" className="btn-primary">
+          <a href="tel:9562253834" className="btn-primary">
             <Phone className="w-4 h-4" />
-            Call (956) 321-0400
+            Call (956) 225-3834
           </a>
-          <a href="mailto:service@texasacplus.com" className="btn-outline">
+          <a href="mailto:arnold@texasacplus.com" className="btn-outline">
             <Mail className="w-4 h-4" />
             Email Us
           </a>
@@ -166,12 +166,13 @@ export const Footer = () => {
             <ul className="space-y-3 font-barlow" style={{ fontSize: '0.8rem' }}>
               {[
                 { id: 'ac-install', label: 'AC Installation' },
-                { id: 'heating', label: 'Heating Repair' },
+                { id: 'commercial-hvac', label: 'Commercial HVAC' },
+                { id: 'generators', label: 'Generator Sales & Service' },
                 { id: 'air-quality', label: 'Air Quality' },
                 { id: 'air-balancing', label: 'Air Balancing' },
                 { id: 'repair', label: 'Diagnostics & Repair' },
-                { id: 'commercial-hvac', label: 'Commercial HVAC' },
                 { id: 'smart-thermostats', label: 'Smart Thermostats' },
+                { id: 'heating', label: 'Heating Repair' },
               ].map(s => (
                 <li key={s.id}>
                   <a
@@ -200,8 +201,8 @@ export const Footer = () => {
                 <Phone className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: 'var(--color-gold)' }} />
                 <div>
                   <span className="block" style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.6rem', textTransform: 'uppercase', letterSpacing: '0.12em' }}>Phone</span>
-                  <a href="tel:9563210400" className="font-bold text-white" style={{ fontSize: '1rem' }}>
-                    (956) 321-0400
+                  <a href="tel:9562253834" className="font-bold text-white" style={{ fontSize: '1rem' }}>
+                    (956) 225-3834
                   </a>
                 </div>
               </li>
@@ -210,12 +211,12 @@ export const Footer = () => {
                 <div>
                   <span className="block" style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.6rem', textTransform: 'uppercase', letterSpacing: '0.12em' }}>Email</span>
                   <a
-                    href="mailto:service@texasacplus.com"
+                    href="mailto:arnold@texasacplus.com"
                     style={{ color: 'rgba(255,255,255,0.75)', transition: 'color 150ms' }}
                     onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'var(--color-gold)'; }}
                     onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.75)'; }}
                   >
-                    service@texasacplus.com
+                    arnold@texasacplus.com
                   </a>
                 </div>
               </li>
