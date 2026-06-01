@@ -126,7 +126,7 @@ export const Services = () => {
         >
           {services.map((service, index) => {
             const Icon = service.icon;
-            const isFeatured = index < 3;
+            const isFeatured = true;
 
             return (
               <a
