@@ -2,13 +2,6 @@ import React, { useRef, useState } from 'react';
 import { Phone, Mail, Clock, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { useReveal } from '../hooks/useReveal';
 
-/* ─────────────────────────────────────────────────────────
-   Replace YOUR_FORM_ID with the Formspree endpoint ID.
-   Sign up free at https://formspree.io → "New Form" →
-   copy the ID (e.g. xyzabcde) and paste below.
-───────────────────────────────────────────────────────── */
-const FORMSPREE_ID = 'YOUR_FORM_ID';
-
 type Status = 'idle' | 'sending' | 'success' | 'error';
 
 const SERVICES = [
@@ -20,6 +13,7 @@ const SERVICES = [
   'Smart Thermostat',
   'Preventive Maintenance',
   'Emergency Service',
+  'Generator Sales & Service',
   'Other',
 ];
 
@@ -53,10 +47,17 @@ export const ContactSection: React.FC = () => {
     setErrors({});
     setStatus('sending');
     try {
-      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      const d = new FormData(form);
+      const res = await fetch('/api/send-email', {
         method: 'POST',
-        body: new FormData(form),
-        headers: { Accept: 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: d.get('name'),
+          phone: d.get('phone'),
+          email: d.get('email'),
+          service: d.get('service'),
+          message: d.get('message'),
+        }),
       });
       setStatus(res.ok ? 'success' : 'error');
     } catch {
