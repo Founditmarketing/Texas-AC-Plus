@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useEffect, useCallback } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { SplashScreen } from './components/SplashScreen';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -48,12 +49,22 @@ export default function App() {
   const handleSplashComplete = useCallback(() => setShowSplash(false), []);
 
   if (showSplash) {
-    return <SplashScreen onComplete={handleSplashComplete} />;
+    return (
+      <>
+        <SplashScreen onComplete={handleSplashComplete} />
+        <Analytics />
+      </>
+    );
   }
 
   /* ── Sub-page routes ── */
   if (page === 'terms') {
-    return <TermsOfService />;
+    return (
+      <>
+        <TermsOfService />
+        <Analytics />
+      </>
+    );
   }
 
   if (page === 'financing') {
@@ -66,6 +77,7 @@ export default function App() {
         <Footer />
         <MobileBottomDock />
         <div className="md:hidden" style={{ height: '58px' }} />
+        <Analytics />
       </>
     );
   }
@@ -80,6 +92,7 @@ export default function App() {
         <Footer />
         <MobileBottomDock />
         <div className="md:hidden" style={{ height: '58px' }} />
+        <Analytics />
       </>
     );
   }
@@ -94,6 +107,7 @@ export default function App() {
         <Footer />
         <MobileBottomDock />
         <div className="md:hidden" style={{ height: '58px' }} />
+        <Analytics />
       </>
     );
   }
@@ -108,33 +122,37 @@ export default function App() {
         <Footer />
         <MobileBottomDock />
         <div className="md:hidden" style={{ height: '58px' }} />
+        <Analytics />
       </>
     );
   }
 
   /* ── Main homepage ── */
   return (
-    <div className="min-h-screen" id="main-container">
-      <Navbar />
+    <>
+      <div className="min-h-screen" id="main-container">
+        <Navbar />
 
-      <main>
-        <Hero />
-        <TrustBar />
-        <Services />
-        <SplitPanels />
-        <WhyChooseUs />
-        <ServiceArea />
-        <ContactSection />
-        <CTABand />
-      </main>
+        <main>
+          <Hero />
+          <TrustBar />
+          <Services />
+          <SplitPanels />
+          <WhyChooseUs />
+          <ServiceArea />
+          <ContactSection />
+          <CTABand />
+        </main>
 
-      <Footer />
+        <Footer />
 
-      {/* Mobile sticky CTA — always accessible */}
-      <MobileBottomDock />
+        {/* Mobile sticky CTA — always accessible */}
+        <MobileBottomDock />
 
-      {/* Mobile spacing buffer so content isn't hidden behind bottom dock */}
-      <div className="md:hidden" style={{ height: '58px' }} />
-    </div>
+        {/* Mobile spacing buffer so content isn't hidden behind bottom dock */}
+        <div className="md:hidden" style={{ height: '58px' }} />
+      </div>
+      <Analytics />
+    </>
   );
 }
