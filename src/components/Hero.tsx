@@ -278,6 +278,36 @@ export const Hero = () => {
             <a href="#services" id="hero-secondary-cta" className="btn-outline">
               Our Services
             </a>
+            <a
+              href="#financing"
+              id="hero-financing-cta"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                padding: '0.85rem 2rem',
+                backgroundColor: 'var(--color-gold)',
+                color: 'var(--color-navy)',
+                fontFamily: 'var(--font-barlow)',
+                fontWeight: 800,
+                fontSize: '0.82rem',
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                textDecoration: 'none',
+                transition: 'transform 200ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 200ms',
+                boxShadow: '0 4px 20px oklch(68% 0.13 68 / 0.35)',
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px) scale(1.03)';
+                (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 32px oklch(68% 0.13 68 / 0.5)';
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.transform = 'translateY(0) scale(1)';
+                (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 20px oklch(68% 0.13 68 / 0.35)';
+              }}
+            >
+              💲 We Offer Financing
+            </a>
           </motion.div>
 
           {/* Stat bar */}
