@@ -118,7 +118,7 @@ export const SplashScreen: React.FC<{ onComplete: () => void }> = ({ onComplete 
       >
         {/* Logo */}
         <img
-          src="/images/HVAClogo.png"
+          src="/images/logo.png"
           alt="Texas AC Plus"
           style={{
             height: '80px',

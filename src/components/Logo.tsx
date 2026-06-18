@@ -18,7 +18,7 @@ export const Logo: React.FC<LogoProps> = ({ variant = 'white', className = '' })
     >
       {/* Real logo image */}
       <img
-        src="/images/HVAClogo.png"
+        src="/images/logo.png"
         alt="Texas AC Plus HVAC Services logo"
         style={{
           height: '52px',
