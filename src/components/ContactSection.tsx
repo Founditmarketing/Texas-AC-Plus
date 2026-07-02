@@ -48,15 +48,14 @@ export const ContactSection: React.FC = () => {
     setStatus('sending');
     try {
       const d = new FormData(form);
-      const res = await fetch('/api/send-email', {
+      const res = await fetch('https://www.founditos.com/api/contact-form/1461c039-ea22-4599-8a76-262c364c7daa', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: d.get('name'),
-          phone: d.get('phone'),
-          email: d.get('email'),
-          service: d.get('service'),
-          message: d.get('message'),
+          name: d.get('name') as string,
+          email: d.get('email') as string,
+          phone: d.get('phone') as string,
+          message: `Service: ${d.get('service') || 'General'}\n\n${d.get('message') || ''}`,
         }),
       });
       setStatus(res.ok ? 'success' : 'error');
