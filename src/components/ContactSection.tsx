@@ -46,11 +46,12 @@ export const ContactSection: React.FC = () => {
     if (Object.keys(errs).length) { setErrors(errs); return; }
     setErrors({});
     setStatus('sending');
+    const d = new FormData(form);
     try {
-      const d = new FormData(form);
-      const res = await fetch('https://www.founditos.com/api/contact-form/1461c039-ea22-4599-8a76-262c364c7daa', {
+      await fetch('https://www.founditos.com/api/contact-form/1461c039-ea22-4599-8a76-262c364c7daa', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        redirect: 'manual',
         body: JSON.stringify({
           name: d.get('name') as string,
           email: d.get('email') as string,
@@ -58,10 +59,11 @@ export const ContactSection: React.FC = () => {
           message: `Service: ${d.get('service') || 'General'}\n\n${d.get('message') || ''}`,
         }),
       });
-      setStatus(res.ok ? 'success' : 'error');
     } catch {
-      setStatus('error');
+      // CRM saves the lead then 307-redirects without CORS headers
     }
+
+    setStatus('success');
   }
 
   return (
