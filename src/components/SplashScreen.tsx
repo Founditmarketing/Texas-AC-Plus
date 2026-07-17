@@ -121,8 +121,10 @@ export const SplashScreen: React.FC<{ onComplete: () => void }> = ({ onComplete 
           src="/images/logo.png"
           alt="Texas AC Plus"
           style={{
-            height: '80px',
+            height: 'min(320px, 35vh)',
+            maxWidth: '90vw',
             width: 'auto',
+            objectFit: 'contain',
             filter: 'drop-shadow(0 4px 20px oklch(0% 0 0 / 0.5))',
           }}
         />

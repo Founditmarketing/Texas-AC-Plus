@@ -232,7 +232,7 @@ export const Hero = () => {
       {/* ── Hero content ── */}
       <div
         className="relative z-20 w-full"
-        style={{ paddingBottom: 'clamp(4rem, 8vh, 6.5rem)', paddingTop: 'clamp(7rem, 14vh, 10rem)' }}
+        style={{ paddingBottom: 'clamp(4rem, 8vh, 6.5rem)', paddingTop: 'clamp(10.5rem, 18vh, 13rem)' }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
 
