@@ -258,18 +258,18 @@ export const Hero = () => {
             className="text-white font-black uppercase"
             style={{
               fontFamily: 'var(--font-barlow)',
-              fontSize: 'clamp(3rem, 8.5vw, 7.2rem)',
-              lineHeight: '0.9',
+              fontSize: 'clamp(2.4rem, 6vw, 5rem)',
+              lineHeight: '0.95',
               letterSpacing: '-0.03em',
               marginBottom: 'clamp(1.25rem, 3vw, 2rem)',
-              maxWidth: '18ch',
+              maxWidth: '26ch',
             }}
           >
-            South Texas
+            Most Trusted
             <br />
-            <span style={{ color: 'var(--color-gold)' }}>HVAC & Generators</span>
+            <span style={{ color: 'var(--color-gold)' }}>AC, HVAC & Generator</span>
             <br />
-            Done Right.
+            Service in Texas
           </motion.h1>
 
           {/* Sub-copy */}
