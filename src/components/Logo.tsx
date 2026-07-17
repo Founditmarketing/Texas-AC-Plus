@@ -3,9 +3,11 @@ import React from 'react';
 interface LogoProps {
   variant?: 'white' | 'navy';
   className?: string;
+  /** Logo image height in px (default 52) */
+  imgHeight?: number;
 }
 
-export const Logo: React.FC<LogoProps> = ({ variant = 'white', className = '' }) => {
+export const Logo: React.FC<LogoProps> = ({ variant = 'white', className = '', imgHeight = 52 }) => {
   const textColor = variant === 'white' ? 'white' : 'var(--color-navy)';
   const subColor = variant === 'white' ? 'rgba(255,255,255,0.75)' : 'var(--color-steel)';
 
@@ -21,7 +23,7 @@ export const Logo: React.FC<LogoProps> = ({ variant = 'white', className = '' })
         src="/images/logo.png"
         alt="Texas AC Plus HVAC Services logo"
         style={{
-          height: '52px',
+          height: `${imgHeight}px`,
           width: 'auto',
           transition: 'transform 300ms cubic-bezier(0.16, 1, 0.3, 1)',
           filter: variant === 'white' ? 'drop-shadow(0 2px 8px oklch(0% 0 0 / 0.35))' : 'none',

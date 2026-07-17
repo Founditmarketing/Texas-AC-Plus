@@ -156,7 +156,7 @@ export const LocationPage: React.FC<LocationPageProps> = ({ locationId }) => {
           }}
         />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-6 w-full pb-14 pt-28">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 w-full pb-14 pt-40">
           <a href="#locations" className="back-btn mb-5 inline-flex" style={{ color: 'rgba(255,255,255,0.6)' }}>
             <ArrowLeft className="w-4 h-4" />
             All Locations

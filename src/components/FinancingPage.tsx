@@ -16,6 +16,8 @@ export const FinancingPage: React.FC = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          paddingTop: '9.5rem',
+          paddingBottom: '3rem',
           background: 'linear-gradient(160deg, var(--color-navy) 0%, oklch(18% 0.06 258) 100%)',
         }}
       >

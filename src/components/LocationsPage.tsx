@@ -208,7 +208,7 @@ export const LocationsPage = () => {
         className="relative overflow-hidden"
         style={{
           backgroundColor: 'var(--color-navy)',
-          paddingTop: '9rem',
+          paddingTop: '12.25rem',
           paddingBottom: '5rem',
         }}
       >

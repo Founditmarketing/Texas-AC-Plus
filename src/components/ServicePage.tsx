@@ -314,7 +314,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId }) => {
         )}
 
         {/* Content */}
-        <div className="relative z-10 max-w-5xl mx-auto px-6 w-full pb-16 pt-32">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 w-full pb-16 pt-44">
           <a href="#services" className="back-btn mb-6 inline-flex" style={{ color: 'rgba(255,255,255,0.65)' }}>
             <ArrowLeft className="w-4 h-4" />
             Back to Services
