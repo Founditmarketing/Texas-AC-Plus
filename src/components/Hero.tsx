@@ -10,6 +10,34 @@ const STATS = [
   { value: '60mi', label: 'Service Radius' },
 ];
 
+/* ── Gold financing CTA — shared style + hover ── */
+const financingBtnStyle: React.CSSProperties = {
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: '0.5rem',
+  padding: '0.85rem 2rem',
+  backgroundColor: 'var(--color-gold)',
+  color: 'var(--color-navy)',
+  fontFamily: 'var(--font-barlow)',
+  fontWeight: 800,
+  fontSize: '0.82rem',
+  letterSpacing: '0.12em',
+  textTransform: 'uppercase',
+  textDecoration: 'none',
+  transition: 'transform 200ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 200ms',
+  boxShadow: '0 4px 20px oklch(68% 0.13 68 / 0.35)',
+};
+
+const handleFinancingBtnEnter = (e: React.MouseEvent<HTMLElement>) => {
+  e.currentTarget.style.transform = 'translateY(-2px) scale(1.03)';
+  e.currentTarget.style.boxShadow = '0 8px 32px oklch(68% 0.13 68 / 0.5)';
+};
+
+const handleFinancingBtnLeave = (e: React.MouseEvent<HTMLElement>) => {
+  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+  e.currentTarget.style.boxShadow = '0 4px 20px oklch(68% 0.13 68 / 0.35)';
+};
+
 /* ─────────────────────────────────────────────
    Canvas Snow — white dot particles
    • Diagonal wind drift (~18° from vertical)
@@ -281,32 +309,20 @@ export const Hero = () => {
             <a
               href="#financing"
               id="hero-financing-cta"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                padding: '0.85rem 2rem',
-                backgroundColor: 'var(--color-gold)',
-                color: 'var(--color-navy)',
-                fontFamily: 'var(--font-barlow)',
-                fontWeight: 800,
-                fontSize: '0.82rem',
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                textDecoration: 'none',
-                transition: 'transform 200ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 200ms',
-                boxShadow: '0 4px 20px oklch(68% 0.13 68 / 0.35)',
-              }}
-              onMouseEnter={e => {
-                (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px) scale(1.03)';
-                (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 32px oklch(68% 0.13 68 / 0.5)';
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget as HTMLElement).style.transform = 'translateY(0) scale(1)';
-                (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 20px oklch(68% 0.13 68 / 0.35)';
-              }}
+              style={financingBtnStyle}
+              onMouseEnter={handleFinancingBtnEnter}
+              onMouseLeave={handleFinancingBtnLeave}
             >
-              💲 We Offer Financing
+              💲 Residential Financing
+            </a>
+            <a
+              href="#contact"
+              id="hero-commercial-financing-cta"
+              style={financingBtnStyle}
+              onMouseEnter={handleFinancingBtnEnter}
+              onMouseLeave={handleFinancingBtnLeave}
+            >
+              💲 Commercial Financing
             </a>
           </motion.div>
 
