@@ -41,22 +41,24 @@ function parseHash(hash: string): { page: string; sub: string | null } {
   return { page: raw.slice(0, slashIdx), sub: raw.slice(slashIdx + 1) };
 }
 
-/** Internal tool also reachable via the clean path /pricing-calculator (vercel.json rewrite). */
-function isPricingCalculatorPath() {
-  return window.location.pathname.replace(/\/+$/, '') === '/pricing-calculator';
+/** Internal pricing tool is ONLY reachable via the /pricing path (vercel.json rewrite) — no hash route. */
+function isPricingPath() {
+  return window.location.pathname.replace(/\/+$/, '') === '/pricing';
 }
 
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
   const hash = useHash();
-  let { page, sub } = parseHash(hash);
-  if (!page && isPricingCalculatorPath()) page = 'pricing-calculator';
+  const { page, sub } = parseHash(hash);
+  // Path-only route (deliberately not a hash route): /pricing shows the
+  // internal calculator unless a hash navigates elsewhere within the SPA.
+  const showPricingTool = !page && isPricingPath();
 
   const handleSplashComplete = useCallback(() => setShowSplash(false), []);
 
   // Skip the splash for the internal calculator — it's a field tool that
   // needs to open instantly.
-  if (showSplash && page !== 'pricing-calculator') {
+  if (showSplash && !showPricingTool) {
     return <SplashScreen onComplete={handleSplashComplete} />;
   }
 
@@ -67,7 +69,7 @@ export default function App() {
 
   /* Internal pricing tool — intentionally NOT linked from nav, footer, or
      sitemap; the page sets a noindex robots meta while mounted. */
-  if (page === 'pricing-calculator') {
+  if (showPricingTool) {
     return (
       <>
         <Navbar />

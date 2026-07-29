@@ -4,6 +4,6 @@
   "outputDirectory": "dist",
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/pricing-calculator", "destination": "/index.html" }
+    { "source": "/pricing", "destination": "/index.html" }
   ]
 }
