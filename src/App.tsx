@@ -20,6 +20,7 @@ import { ServicePage } from './components/ServicePage';
 import { LocationsPage } from './components/LocationsPage';
 import { LocationPage } from './components/LocationPage';
 import { FinancingPage } from './components/FinancingPage';
+import { PricingCalculatorPage } from './components/PricingCalculatorPage';
 
 /** Parse hash routing — handles nested routes like #services/ac-install */
 function useHash() {
@@ -40,20 +41,45 @@ function parseHash(hash: string): { page: string; sub: string | null } {
   return { page: raw.slice(0, slashIdx), sub: raw.slice(slashIdx + 1) };
 }
 
+/** Internal pricing tool is ONLY reachable via the /pricing path (vercel.json rewrite) — no hash route. */
+function isPricingPath() {
+  return window.location.pathname.replace(/\/+$/, '') === '/pricing';
+}
+
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
   const hash = useHash();
   const { page, sub } = parseHash(hash);
+  // Path-only route (deliberately not a hash route): /pricing shows the
+  // internal calculator unless a hash navigates elsewhere within the SPA.
+  const showPricingTool = !page && isPricingPath();
 
   const handleSplashComplete = useCallback(() => setShowSplash(false), []);
 
-  if (showSplash) {
+  // Skip the splash for the internal calculator — it's a field tool that
+  // needs to open instantly.
+  if (showSplash && !showPricingTool) {
     return <SplashScreen onComplete={handleSplashComplete} />;
   }
 
   /* ── Sub-page routes ── */
   if (page === 'terms') {
     return <TermsOfService />;
+  }
+
+  /* Internal pricing tool — intentionally NOT linked from nav, footer, or
+     sitemap; the page sets a noindex robots meta while mounted. */
+  if (showPricingTool) {
+    return (
+      <>
+        <Navbar />
+        <div style={{ paddingTop: '8px' }}>
+          <PricingCalculatorPage />
+        </div>
+        <Footer />
+        {/* No MobileBottomDock here — the calculator has its own sticky price bar */}
+      </>
+    );
   }
 
   if (page === 'financing') {
