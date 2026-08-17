@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /pricing
+
+Sitemap: https://www.texasacplus.com/sitemap.xml

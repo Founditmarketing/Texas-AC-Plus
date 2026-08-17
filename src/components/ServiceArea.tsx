@@ -11,12 +11,12 @@ const CITIES = [
 
 /* Cities with dedicated location pages */
 const CITY_LINKS: Record<string, string> = {
-  McAllen: '#locations/mcallen',
-  Edinburg: '#locations/edinburg',
-  Harlingen: '#locations/harlingen',
-  Mission: '#locations/mission',
-  Weslaco: '#locations/weslaco',
-  Pharr: '#locations/pharr',
+  McAllen: '/locations/mcallen',
+  Edinburg: '/locations/edinburg',
+  Harlingen: '/locations/harlingen',
+  Mission: '/locations/mission',
+  Weslaco: '/locations/weslaco',
+  Pharr: '/locations/pharr',
 };
 
 export const ServiceArea = () => {
@@ -170,7 +170,7 @@ export const ServiceArea = () => {
           <a href="tel:9562253834" id="service-area-cta" className="btn-primary">
             Call to Confirm Your Area
           </a>
-          <a href="#locations" className="btn-outline">
+          <a href="/locations" className="btn-outline">
             View All Location Pages
           </a>
         </div>

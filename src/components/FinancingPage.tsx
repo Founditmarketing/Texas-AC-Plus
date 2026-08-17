@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { Phone, CreditCard, Clock, ArrowRight } from 'lucide-react';
 import { useReveal } from '../hooks/useReveal';
+import { PageSEO } from './PageSEO';
 
 export const FinancingPage: React.FC = () => {
   const ref = useRef<HTMLElement>(null);
@@ -8,6 +9,11 @@ export const FinancingPage: React.FC = () => {
 
   return (
     <div style={{ backgroundColor: 'var(--color-off-white)', minHeight: '100vh' }}>
+      <PageSEO
+        title="HVAC Financing | Texas AC Plus — Edinburg, TX & RGV"
+        description="Flexible financing options for AC installation and repair in the Rio Grande Valley, partnering with Synchrony. Call (956) 225-3834 for details."
+        path="/financing"
+      />
       {/* Hero */}
       <section
         className="relative overflow-hidden"
@@ -117,7 +123,7 @@ export const FinancingPage: React.FC = () => {
               <Phone className="w-4 h-4" />
               Call for Details
             </a>
-            <a href="#home" className="btn-outline">
+            <a href="/" className="btn-outline">
               <ArrowRight className="w-4 h-4" />
               Back to Home
             </a>

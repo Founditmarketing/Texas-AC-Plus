@@ -134,12 +134,12 @@ export const Footer = () => {
             </h4>
             <ul className="space-y-3 font-barlow" style={{ fontSize: '0.875rem' }}>
               {[
-                { href: '#home', label: 'Home' },
-                { href: '#services', label: 'Services' },
-                { href: '#locations', label: 'Locations' },
-                { href: '#financing', label: 'Financing' },
-                { href: '#service-area', label: 'Service Area' },
-                { href: '#contact', label: 'Contact' },
+                { href: '/', label: 'Home' },
+                { href: '/#services', label: 'Services' },
+                { href: '/locations', label: 'Locations' },
+                { href: '/financing', label: 'Financing' },
+                { href: '/#service-area', label: 'Service Area' },
+                { href: '/#contact', label: 'Contact' },
               ].map(item => (
                 <li key={item.href}>
                   <a
@@ -176,7 +176,7 @@ export const Footer = () => {
               ].map(s => (
                 <li key={s.id}>
                   <a
-                    href={`#services/${s.id}`}
+                    href={`/services/${s.id}`}
                     style={{ color: 'rgba(255,255,255,0.6)', textTransform: 'uppercase', letterSpacing: '0.06em', transition: 'color 150ms' }}
                     onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'var(--color-gold)'; }}
                     onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.6)'; }}
@@ -255,7 +255,7 @@ export const Footer = () => {
               Serving Hidalgo County &amp; Rio Grande Valley
             </p>
             <a
-              href="#terms"
+              href="/terms"
               className="font-barlow uppercase"
               style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.65rem', letterSpacing: '0.12em', textDecoration: 'none', transition: 'color 150ms' }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'var(--color-gold)'; }}

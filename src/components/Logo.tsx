@@ -13,7 +13,7 @@ export const Logo: React.FC<LogoProps> = ({ variant = 'white', className = '', i
 
   return (
     <a
-      href="#home"
+      href="/"
       aria-label="Texas AC Plus — Home"
       className={`flex items-center gap-3 group ${className}`}
       style={{ textDecoration: 'none' }}

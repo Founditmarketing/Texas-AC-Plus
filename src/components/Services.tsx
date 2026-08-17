@@ -132,7 +132,7 @@ export const Services = () => {
               <a
                 key={service.id}
                 id={`service-card-${service.id}`}
-                href={`#services/${service.id}`}
+                href={`/services/${service.id}`}
                 className="reveal group relative block"
                 style={{
                   backgroundColor: isFeatured ? 'var(--color-navy)' : 'white',

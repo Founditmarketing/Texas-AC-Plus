@@ -1,6 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import { MapPin, Phone, ArrowRight, Star, ChevronRight } from 'lucide-react';
 import { useReveal } from '../hooks/useReveal';
+import { PageSEO, breadcrumbSchema } from './PageSEO';
+import { SITE_URL } from '../seo-config';
 
 /* ── Location data ── */
 export interface LocationData {
@@ -112,7 +114,7 @@ const LocationCard = ({ loc }: { loc: LocationData }) => {
   return (
     <a
       ref={cardRef}
-      href={`#locations/${loc.id}`}
+      href={`/locations/${loc.id}`}
       className="location-card block relative overflow-hidden group"
       style={{
         backgroundColor: loc.bgColor,
@@ -203,6 +205,15 @@ export const LocationsPage = () => {
 
   return (
     <div style={{ backgroundColor: 'var(--color-off-white)', minHeight: '100vh' }}>
+      <PageSEO
+        title="HVAC Service Locations | Texas AC Plus — Rio Grande Valley"
+        description="Texas AC Plus serves McAllen, Edinburg, Harlingen, Mission, Weslaco, Pharr and 60 miles of the Rio Grande Valley. Find your city for local HVAC service."
+        path="/locations"
+        jsonLd={breadcrumbSchema([
+          { name: 'Home', url: `${SITE_URL}/` },
+          { name: 'Locations', url: `${SITE_URL}/locations` },
+        ])}
+      />
       {/* Hero */}
       <section
         className="relative overflow-hidden"
@@ -246,7 +257,7 @@ export const LocationsPage = () => {
         </svg>
 
         <div className="max-w-5xl mx-auto px-6 relative z-10">
-          <a href="#home" className="back-btn mb-8 inline-flex" style={{ color: 'rgba(255,255,255,0.55)' }}>
+          <a href="/" className="back-btn mb-8 inline-flex" style={{ color: 'rgba(255,255,255,0.55)' }}>
             <ChevronRight className="w-4 h-4 rotate-180" />
             Back to Home
           </a>

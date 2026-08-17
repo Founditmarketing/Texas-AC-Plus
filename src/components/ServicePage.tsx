@@ -1,6 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import { ArrowLeft, Phone, CheckCircle, ChevronRight, Snowflake, Flame, Wind, Wrench, Zap, Building2, Gauge, Power } from 'lucide-react';
 import { useCursorParallax } from '../hooks/useCursorParallax';
+import { PageSEO, faqPageSchema, breadcrumbSchema } from './PageSEO';
+import { SITE_URL } from '../seo-config';
 
 interface ServiceConfig {
   id: string;
@@ -246,8 +248,14 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId }) => {
   if (!service) {
     return (
       <div style={{ padding: '8rem 2rem', textAlign: 'center' }}>
+        <PageSEO
+          title="Service Not Found | Texas AC Plus"
+          description="This service page could not be found."
+          path={`/services/${serviceId}`}
+          noindex
+        />
         <h2>Service not found.</h2>
-        <a href="#services" className="btn-primary mt-6 inline-flex">Back to Services</a>
+        <a href="/#services" className="btn-primary mt-6 inline-flex">Back to Services</a>
       </div>
     );
   }
@@ -258,6 +266,19 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId }) => {
 
   return (
     <div style={{ backgroundColor: 'var(--color-off-white)', minHeight: '100vh' }}>
+      <PageSEO
+        title={`${service.title} | Texas AC Plus — Edinburg, TX & RGV`}
+        description={`${service.tagline} Serving Edinburg, McAllen & the Rio Grande Valley. Call (956) 225-3834 for a free estimate.`}
+        path={`/services/${service.id}`}
+        jsonLd={[
+          faqPageSchema(service.faqs),
+          breadcrumbSchema([
+            { name: 'Home', url: `${SITE_URL}/` },
+            { name: 'Services', url: `${SITE_URL}/#services` },
+            { name: service.title, url: `${SITE_URL}/services/${service.id}` },
+          ]),
+        ]}
+      />
       {/* Hero */}
       <section
         ref={sectionRef}
@@ -315,7 +336,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId }) => {
 
         {/* Content */}
         <div className="relative z-10 max-w-5xl mx-auto px-6 w-full pb-16 pt-44">
-          <a href="#services" className="back-btn mb-6 inline-flex" style={{ color: 'rgba(255,255,255,0.65)' }}>
+          <a href="/#services" className="back-btn mb-6 inline-flex" style={{ color: 'rgba(255,255,255,0.65)' }}>
             <ArrowLeft className="w-4 h-4" />
             Back to Services
           </a>
@@ -437,7 +458,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId }) => {
                 {service.related.map((id) => (
                   <li key={id}>
                     <a
-                      href={`#services/${id}`}
+                      href={`/services/${id}`}
                       className="flex items-center gap-2 font-barlow font-semibold uppercase"
                       style={{ fontSize: '0.8rem', letterSpacing: '0.08em', color: 'var(--color-navy)', transition: 'color 150ms' }}
                       onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'var(--color-red)'; }}

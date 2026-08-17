@@ -2,6 +2,8 @@ import React, { useRef, useEffect } from 'react';
 import { MapPin, Phone, CheckCircle, ArrowLeft, Star } from 'lucide-react';
 import { useCursorParallax } from '../hooks/useCursorParallax';
 import { LOCATIONS, type LocationData } from './LocationsPage';
+import { PageSEO, breadcrumbSchema } from './PageSEO';
+import { SITE_URL } from '../seo-config';
 
 /* Detailed content per city */
 const LOCATION_CONTENT: Record<string, {
@@ -123,14 +125,48 @@ export const LocationPage: React.FC<LocationPageProps> = ({ locationId }) => {
   if (!loc || !content) {
     return (
       <div style={{ padding: '8rem 2rem', textAlign: 'center' }}>
+        <PageSEO
+          title="Location Not Found | Texas AC Plus"
+          description="This location page could not be found."
+          path={`/locations/${locationId}`}
+          noindex
+        />
         <h2 className="font-black italic uppercase" style={{ color: 'var(--color-navy)' }}>Location not found.</h2>
-        <a href="#locations" className="btn-primary mt-6 inline-flex">Back to Locations</a>
+        <a href="/locations" className="btn-primary mt-6 inline-flex">Back to Locations</a>
       </div>
     );
   }
 
   return (
     <div style={{ backgroundColor: 'var(--color-off-white)', minHeight: '100vh' }}>
+      <PageSEO
+        title={`HVAC Service in ${loc.city}, TX | Texas AC Plus`}
+        description={`Same-day AC repair, installation & maintenance in ${loc.city}, TX. ${loc.tagline}. Call (956) 225-3834 for a free estimate.`}
+        path={`/locations/${loc.id}`}
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Service',
+            serviceType: 'HVAC Installation, Repair & Maintenance',
+            provider: {
+              '@type': 'HVACBusiness',
+              name: 'Texas AC Plus',
+              telephone: '(956) 225-3834',
+              url: SITE_URL,
+            },
+            areaServed: {
+              '@type': 'City',
+              name: loc.city,
+              containedInPlace: { '@type': 'AdministrativeArea', name: loc.county },
+            },
+          },
+          breadcrumbSchema([
+            { name: 'Home', url: `${SITE_URL}/` },
+            { name: 'Locations', url: `${SITE_URL}/locations` },
+            { name: loc.city, url: `${SITE_URL}/locations/${loc.id}` },
+          ]),
+        ]}
+      />
       {/* Hero */}
       <section
         ref={sectionRef}
@@ -157,7 +193,7 @@ export const LocationPage: React.FC<LocationPageProps> = ({ locationId }) => {
         />
 
         <div className="relative z-10 max-w-5xl mx-auto px-6 w-full pb-14 pt-40">
-          <a href="#locations" className="back-btn mb-5 inline-flex" style={{ color: 'rgba(255,255,255,0.6)' }}>
+          <a href="/locations" className="back-btn mb-5 inline-flex" style={{ color: 'rgba(255,255,255,0.6)' }}>
             <ArrowLeft className="w-4 h-4" />
             All Locations
           </a>
@@ -301,7 +337,7 @@ export const LocationPage: React.FC<LocationPageProps> = ({ locationId }) => {
                 {LOCATIONS.filter((l) => l.id !== locationId).map((l) => (
                   <li key={l.id}>
                     <a
-                      href={`#locations/${l.id}`}
+                      href={`/locations/${l.id}`}
                       className="font-barlow font-semibold uppercase flex items-center gap-2"
                       style={{ fontSize: '0.8rem', letterSpacing: '0.08em', color: 'var(--color-steel)', transition: 'color 150ms' }}
                       onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'var(--color-red)'; }}
@@ -331,7 +367,7 @@ export const LocationPage: React.FC<LocationPageProps> = ({ locationId }) => {
             <Phone className="w-4 h-4" />
             Call (956) 225-3834
           </a>
-          <a href="#locations" className="btn-outline">
+          <a href="/locations" className="btn-outline">
             View All Locations
           </a>
         </div>

@@ -3,13 +3,13 @@ import { Menu, X, Phone } from 'lucide-react';
 import { Logo } from './Logo';
 
 const NAV_LINKS = [
-  { label: 'Home', href: '#home' },
-  { label: 'Services', href: '#services' },
-  { label: 'About', href: '#about' },
-  { label: 'Locations', href: '#locations' },
-  { label: 'Area', href: '#service-area' },
-  { label: 'Financing', href: '#financing' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '/' },
+  { label: 'Services', href: '/#services' },
+  { label: 'About', href: '/#about' },
+  { label: 'Locations', href: '/locations' },
+  { label: 'Area', href: '/#service-area' },
+  { label: 'Financing', href: '/financing' },
+  { label: 'Contact', href: '/#contact' },
 ];
 
 export const Navbar = () => {

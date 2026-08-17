@@ -303,11 +303,11 @@ export const Hero = () => {
               <Phone className="w-4 h-4" />
               (956) 225-3834
             </a>
-            <a href="#services" id="hero-secondary-cta" className="btn-outline">
+            <a href="/#services" id="hero-secondary-cta" className="btn-outline">
               Our Services
             </a>
             <a
-              href="#financing"
+              href="/financing"
               id="hero-financing-cta"
               style={financingBtnStyle}
               onMouseEnter={handleFinancingBtnEnter}
@@ -316,7 +316,7 @@ export const Hero = () => {
               💲 Residential Financing
             </a>
             <a
-              href="#contact"
+              href="/#contact"
               id="hero-commercial-financing-cta"
               style={financingBtnStyle}
               onMouseEnter={handleFinancingBtnEnter}
@@ -372,7 +372,7 @@ export const Hero = () => {
 
       {/* ── Scroll nudge ── */}
       <motion.a
-        href="#services"
+        href="/#services"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.1, duration: 0.6 }}

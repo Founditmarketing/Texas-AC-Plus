@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Calculator, Copy, Check, RotateCcw } from 'lucide-react';
+import { PageSEO } from './PageSEO';
 import {
   SYSTEM_TYPES,
   TONNAGE_OPTIONS,
@@ -85,18 +86,8 @@ export const PricingCalculatorPage: React.FC = () => {
   const [showRange, setShowRange] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  /* Internal page: noindex + internal title while mounted */
   useEffect(() => {
-    const meta = document.querySelector('meta[name="robots"]');
-    const prevRobots = meta?.getAttribute('content') ?? null;
-    meta?.setAttribute('content', 'noindex, nofollow');
-    const prevTitle = document.title;
-    document.title = 'Pricing Calculator (Internal) | Texas AC Plus';
     window.scrollTo(0, 0);
-    return () => {
-      if (meta && prevRobots) meta.setAttribute('content', prevRobots);
-      document.title = prevTitle;
-    };
   }, []);
 
   const isMiniSplit = systemType === 'mini_split';
@@ -189,6 +180,12 @@ export const PricingCalculatorPage: React.FC = () => {
 
   return (
     <div style={{ backgroundColor: 'var(--color-off-white)', minHeight: '100vh' }}>
+      <PageSEO
+        title="Pricing Calculator (Internal) | Texas AC Plus"
+        description="Internal HVAC system pricing calculator."
+        path="/pricing"
+        noindex
+      />
       {/* ── Page header — matches sub-page hero styling ── */}
       <section
         className="relative overflow-hidden"

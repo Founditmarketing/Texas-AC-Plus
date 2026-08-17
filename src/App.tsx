@@ -21,38 +21,87 @@ import { LocationsPage } from './components/LocationsPage';
 import { LocationPage } from './components/LocationPage';
 import { FinancingPage } from './components/FinancingPage';
 import { PricingCalculatorPage } from './components/PricingCalculatorPage';
+import { PageSEO } from './components/PageSEO';
+import { DEFAULT_TITLE, DEFAULT_DESCRIPTION } from './seo-config';
 
-/** Parse hash routing — handles nested routes like #services/ac-install */
-function useHash() {
-  const [hash, setHash] = useState(() => window.location.hash);
+/** Real page routes that used to live under a #hash before the path-routing migration. */
+const LEGACY_HASH_PAGE_PREFIXES = new Set(['services', 'locations', 'financing', 'terms']);
+
+/**
+ * Old bookmarks/links pointed at e.g. /#services/ac-install. Since fragments never
+ * reach the server, this can only be fixed client-side: rewrite the URL to the real
+ * path (/services/ac-install) via replaceState before the first render.
+ */
+function resolveInitialPath(): string {
+  const { pathname, hash } = window.location;
+  if (pathname === '/' && hash) {
+    const raw = hash.startsWith('#') ? hash.slice(1) : hash;
+    const [first] = raw.split('/');
+    if (raw && LEGACY_HASH_PAGE_PREFIXES.has(first)) {
+      const newPath = '/' + raw;
+      window.history.replaceState({}, '', newPath);
+      return newPath;
+    }
+  }
+  return pathname;
+}
+
+function parsePath(pathname: string): { page: string; sub: string | null } {
+  const parts = pathname.replace(/\/+$/, '').split('/').filter(Boolean);
+  if (parts.length === 0) return { page: '', sub: null };
+  return { page: parts[0], sub: parts[1] ?? null };
+}
+
+/** Client-side router: pathname-based navigation via the History API. */
+function usePathRouter() {
+  const [path, setPath] = useState(() => resolveInitialPath());
+
   useEffect(() => {
-    const handler = () => setHash(window.location.hash);
-    window.addEventListener('hashchange', handler);
-    return () => window.removeEventListener('hashchange', handler);
+    const onPopState = () => setPath(window.location.pathname);
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
   }, []);
-  return hash;
-}
 
-function parseHash(hash: string): { page: string; sub: string | null } {
-  // Remove leading #
-  const raw = hash.startsWith('#') ? hash.slice(1) : hash;
-  const slashIdx = raw.indexOf('/');
-  if (slashIdx === -1) return { page: raw, sub: null };
-  return { page: raw.slice(0, slashIdx), sub: raw.slice(slashIdx + 1) };
-}
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      if (e.defaultPrevented || e.button !== 0) return;
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const anchor = (e.target as HTMLElement)?.closest?.('a');
+      if (!anchor) return;
+      const href = anchor.getAttribute('href');
+      // Only intercept our own root-relative links (/, /services/x, /#contact, ...) —
+      // tel:, mailto:, external URLs, and protocol-relative //links pass through untouched.
+      if (!href || !href.startsWith('/') || href.startsWith('//')) return;
+      if (anchor.target && anchor.target !== '_self') return;
 
-/** Internal pricing tool is ONLY reachable via the /pricing path (vercel.json rewrite) — no hash route. */
-function isPricingPath() {
-  return window.location.pathname.replace(/\/+$/, '') === '/pricing';
+      const url = new URL(href, window.location.origin);
+      const samePath = url.pathname === window.location.pathname;
+      // Pure in-page anchor on the current page — let the browser's native scroll happen.
+      if (samePath && url.hash) return;
+
+      e.preventDefault();
+      window.history.pushState({}, '', url.pathname + url.hash);
+      setPath(url.pathname);
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        if (url.hash) {
+          document.querySelector(url.hash)?.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          window.scrollTo(0, 0);
+        }
+      }));
+    };
+    document.addEventListener('click', onClick);
+    return () => document.removeEventListener('click', onClick);
+  }, []);
+
+  return path;
 }
 
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
-  const hash = useHash();
-  const { page, sub } = parseHash(hash);
-  // Path-only route (deliberately not a hash route): /pricing shows the
-  // internal calculator unless a hash navigates elsewhere within the SPA.
-  const showPricingTool = !page && isPricingPath();
+  const path = usePathRouter();
+  const { page, sub } = parsePath(path);
+  const showPricingTool = page === 'pricing';
 
   const handleSplashComplete = useCallback(() => setShowSplash(false), []);
 
@@ -141,6 +190,7 @@ export default function App() {
   /* ── Main homepage ── */
   return (
     <div className="min-h-screen" id="main-container">
+      <PageSEO title={DEFAULT_TITLE} description={DEFAULT_DESCRIPTION} path="/" />
       <Navbar />
 
       <main>

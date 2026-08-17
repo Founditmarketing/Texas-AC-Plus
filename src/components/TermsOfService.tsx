@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Logo } from './Logo';
 import { Phone, Mail, ArrowLeft } from 'lucide-react';
+import { PageSEO } from './PageSEO';
 
 const SectionHeading = ({ children }: { children: React.ReactNode }) => (
   <h2
@@ -56,11 +57,15 @@ const Body = ({ children }: { children: React.ReactNode }) => (
 export const TermsOfService = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
-    document.title = 'Terms of Service | Texas AC Plus';
   }, []);
 
   return (
     <div style={{ backgroundColor: 'var(--color-navy-dark)', minHeight: '100vh' }}>
+      <PageSEO
+        title="Terms of Service | Texas AC Plus"
+        description="Terms of Service for Texas AC Plus HVAC services in Edinburg, TX and the Rio Grande Valley."
+        path="/terms"
+      />
 
       {/* Sticky nav */}
       <nav
@@ -77,7 +82,6 @@ export const TermsOfService = () => {
           <Logo variant="white" />
           <a
             href="/"
-            onClick={e => { e.preventDefault(); window.location.hash = ''; window.location.reload(); }}
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -411,7 +415,6 @@ export const TermsOfService = () => {
         <div style={{ textAlign: 'center' }}>
           <a
             href="/"
-            onClick={e => { e.preventDefault(); window.location.hash = ''; window.location.reload(); }}
             className="btn-primary"
             style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
           >

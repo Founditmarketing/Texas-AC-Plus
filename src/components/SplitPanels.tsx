@@ -57,7 +57,7 @@ export const SplitPanels = () => {
               ))}
             </ul>
             <a
-              href="#contact"
+              href="/#contact"
               className="inline-flex items-center gap-2 font-bold uppercase font-barlow group/link"
               style={{ fontSize: '0.75rem', letterSpacing: '0.14em', color: 'var(--color-gold)', transition: 'color 150ms' }}
             >
@@ -117,7 +117,7 @@ export const SplitPanels = () => {
               ))}
             </ul>
             <a
-              href="#contact"
+              href="/#contact"
               className="inline-flex items-center gap-2 font-bold uppercase font-barlow group/link"
               style={{ fontSize: '0.75rem', letterSpacing: '0.14em', color: 'var(--color-gold)', transition: 'color 150ms' }}
             >
